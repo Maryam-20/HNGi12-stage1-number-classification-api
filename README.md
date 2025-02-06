@@ -4,7 +4,7 @@
 The **Number Property API** is a simple RESTful API that takes a number as input and returns interesting mathematical properties about it, along with a fun fact. The API is designed to process both integers and special cases like alphabets or non-numeric inputs.
 
 ** Features**
-- Accepts a number as input.
+- Accepts a integer as input.
 - Returns mathematical properties (e.g., prime, even/odd, perfect square, armstrong, digit sum).
 - Provides a fun fact related to the number.
 - Handles invalid inputs gracefully.
@@ -44,7 +44,7 @@ Start the Django Server
  Get Number Properties
 Request
 ```sh
-GET /number-api/{number}/
+GET (https://hngi12-stage-one.onrender.com/api/classify-number/?number=371)
 ```
 Response (Example for `371`)
 ```json
@@ -64,7 +64,7 @@ Response (Example for `371`)
 Handle Invalid Inputs
 Request
 ```sh
-GET /number-api/a/
+GET (https://hngi12-stage-one.onrender.com/api/classify-number/?number=a)
 ```
 Response
 ```json
