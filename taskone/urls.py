@@ -1,10 +1,9 @@
 from django.urls import path
-from .views import get_or_create_record, get_error
+from .views import classify_number
 
 urlpatterns = [
     
-    path("number-api/<int:number>/", get_or_create_record, name = "number-api-number"),
-    path("number-api/<str:alphabet>/", get_error, name = "number-api-alphabet"),
+    path("api/classify-number/", classify_number, name = "number-api-number"),
 ]
 
 

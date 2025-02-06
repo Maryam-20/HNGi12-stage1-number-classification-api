@@ -24,11 +24,11 @@ PROJECT_DIR = os.path.dirname(os.path.abspath(__file__))
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-# SECRET_KEY = 'django-insecure-z$(i5lzyco!1l1_-@g9nsts%r7wd_qmt=s!$qp)rqxt5o+o8e)'
+
 SECRET_KEY = config("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = config("DEBUG")
 
 ALLOWED_HOSTS = ["*"]
 
@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     # Third Party APP
     'rest_framework',
+    'corsheaders',
     # Apps
     'taskone',
 ]
@@ -51,12 +52,15 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    "corsheaders.middleware.CorsMiddleware",
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
+CORS_ORIGIN_ALLOW_ALL = True
 
 ROOT_URLCONF = 'stageOne.urls'
 
@@ -88,8 +92,8 @@ DATABASES = {
         "NAME": config('DB_NAME'),
         "USER": config('DB_USER'),
         "PASSWORD": config('DB_PASSWORD'),
-        "HOST": config('DB_HOST', default = "localhost"), #default = "localhost"
-        "PORT": config('DB_PORT', cast = int, default = 3308), #cast = int, default = 3308
+        "HOST": config('DB_HOST', default = "localhost"), 
+        "PORT": config('DB_PORT', cast = int, default = 3308), 
     }
 }
 
