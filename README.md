@@ -1,52 +1,85 @@
-**Number Property API - Stage 1 Task**
+# 🔢 Number Property API
 
-**Overview**
-The **Number Property API** is a simple RESTful API that takes a number as input and returns interesting mathematical properties about it, along with a fun fact. The API is designed to process both integers and special cases like alphabets or non-numeric inputs.
+[![Python](https://img.shields.io/badge/python-3.10+-blue.svg)](https://www.python.org/)
+[![Django](https://img.shields.io/badge/django-4.2-green.svg)](https://www.djangoproject.com/)
+[![PostgreSQL](https://img.shields.io/badge/postgreSQL-15-blue)](https://www.postgresql.org/)
+[![DRF](https://img.shields.io/badge/DRF-3.14-red)](https://www.django-rest-framework.org/)
+[![Deploy](https://img.shields.io/badge/Hosted%20on-Render-purple)](https://hngi12-stage-one.onrender.com)
 
-** Features**
-- Accepts a integer as input.
-- Returns mathematical properties (e.g., prime, even/odd, perfect square, armstrong, digit sum).
-- Provides a fun fact related to the number.
-- Handles invalid inputs gracefully.
+A simple RESTful API that classifies numbers by their mathematical properties. Whether it's an Armstrong number, perfect square, prime, or just a plain integer, the API processes it and returns interesting attributes and a fun fact.
 
-**Tech Stack**
-- **Backend**: Django, Django REST Framework (DRF)
-- **Database**: Postgress
-- **Hosting**:Render
+---
 
-**Project Setup**
-Clone the Repository
-```sh
- git clone https://github.com/Maryam-20/HNGi12-stage-one.git
- cd stageOne
+## 📚 Table of Contents
+
+- [Features](#features)
+- [Installation](#installation)
+- [Usage](#usage)
+- [API Endpoints](#api-endpoints)
+- [Technologies Used](#technologies-used)
+
+---
+
+## 🚀 Features
+
+- Accepts integers as input via query parameters.
+- Identifies mathematical properties:
+  - Prime
+  - Even/Odd
+  - Perfect number
+  - Armstrong number
+  - Digit sum
+- Provides a fun fact for valid inputs.
+- Graceful handling of invalid or non-numeric inputs.
+
+---
+
+## ⚙️ Installation
+
+Follow these steps to set up the project locally:
+
+### 1. Clone the Repository
+```bash
+git clone https://github.com/Maryam-20/HNGi12-stage-one.git
+cd stageOne
 ```
 
-Create a Virtual Environment & Install Dependencies
-```sh
- python -m venv venv  # Create virtual environment
- source venv/bin/activate  # Activate on macOS/Linux
- venv\Scripts\activate  # Activate on Windows
+### 2. Set Up Virtual Environment
+```bash
+python -m venv venv  # Create virtual environment
 
- pip install -r requirements.txt  # Install dependencies
+# Activate it
+source venv/bin/activate      # macOS/Linux
+venv\Scripts\activate         # Windows
 ```
 
-Run Migrations
-```sh
- python manage.py migrate
+### 3. Install Dependencies
+```bash
+pip install -r requirements.txt
 ```
 
-Start the Django Server
-```sh
- python manage.py runserver
+### 4. Run Migrations
+```bash
+python manage.py migrate
 ```
 
-**API Endpoints**
- Get Number Properties
-Request
-```sh
-GET (https://hngi12-stage-one.onrender.com/api/classify-number/?number=371)
+### 5. Start the Development Server
+```bash
+python manage.py runserver
 ```
-Response (Example for `371`)
+
+---
+
+## 📌 Usage
+
+### Example: Classify a Valid Number
+
+**Request**
+```http
+GET https://hngi12-stage-one.onrender.com/api/classify-number/?number=371
+```
+
+**Response**
 ```json
 {
     "number": 371,
@@ -61,19 +94,35 @@ Response (Example for `371`)
 }
 ```
 
-Handle Invalid Inputs
-Request
-```sh
-GET (https://hngi12-stage-one.onrender.com/api/classify-number/?number=a)
+### Example: Handle Invalid Input
+
+**Request**
+```http
+GET https://hngi12-stage-one.onrender.com/api/classify-number/?number=a
 ```
-Response
+
+**Response**
 ```json
 {
-  "number": "alphabet",
-  "error": true
+    "error": "Invalid number format"
 }
 ```
 
- Contributors
-Maryam Anileleye - Backend Developer
+---
 
+## 🔌 API Endpoints
+
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| `GET` | `/api/classify-number/?number=<value>` | Classifies a number and returns its properties and a fun fact |
+
+---
+
+## 🛠 Technologies Used
+
+- **Backend:** Django, Django REST Framework
+- **Database:** PostgreSQL
+- **Language:** Python
+- **Hosting:** Render
+
+---
